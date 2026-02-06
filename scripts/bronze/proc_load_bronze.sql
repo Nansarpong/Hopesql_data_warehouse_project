@@ -1,0 +1,63 @@
+/*
+======================================================================
+stored procedure: Load Bronze Layer ( source -. Bronze)
+======================================================================
+script purpose: 
+  THIS STORED PROCEDURE LOADS DATA INTO THE 'BRONZE' SCHEMA FROM EXTERNAL EXCEL/CSV FILES
+  IT PERFORMS THE FOLLOWING ACTIONS: 
+  -Truncates the bronze tables before oading data. 
+  -Uses the 'Bulk Insert' command to load data from csv file bronze tables.
+
+Parameters: 
+ None - this stored procedure does not accept any parameters or return any values. 
+
+Use Example: 
+ EXEC bronze.load_bronze;
+
+========================================================================
+*/
+
+
+
+--Stored procedure
+
+CREATE OR ALTER PROCEDURE bronze.load_bronze AS
+
+BEGIN
+	DECLARE @start_time DATETIME, @end_time DATETIME;
+	BEGIN TRY
+		PRINT '==============================================================';
+		PRINT 'Loading Bronze Layer';
+		PRINT '==============================================================';
+
+
+		PRINT '==============================================================';
+		PRINT 'Loading HopeExtract Table';
+		PRINT '==============================================================';
+-- Full Load
+		SET @start_time = GETDATE();
+		TRUNCATE TABLE [bronze].[HopeExtract]
+	
+		BULK INSERT [bronze].[HopeExtract]
+
+-- get the path for below. 
+		FROM ----SharePoint
+		WITH (
+		FirstROW = 2,
+		FIELDTERMINATOR = ',',
+		TABLOCK
+		);
+		SET @end_time = GETDATE();
+		PRINT ' >> Load Duration : ' + CAST(DATEDIFF(SECOND, @start_time,@end_time) AS NVARCHAR) + ' SECONDS';
+	END TRY
+	BEGIN CATCH
+		PRINT '==============================================================';
+		PRINT 'Error occured duing Loading bronze layer';
+		PRINT 'Error Message' + ERROR_MESSAGE ();
+		PRINT 'Error Message' + CAST (ERROR_NUMBER() AS NVARCHAR;
+		PRINT 'Error Message' + CAST (ERROR_STATE() AS NVARCHAR;
+		PRINT '==============================================================';
+	END CATCH
+END
+SELECT * FROM [bronze].[HopeExtract]
+SELECT COUNT (* ) FROM [bronze].[HopeExtrac
