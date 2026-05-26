@@ -356,7 +356,11 @@ BEGIN
 	SELECT 
 		CAST [Application Id] AS INT,
 		CAST [Household Id] AS INT,
-		CAST  [Person Id]  AS INT,
+		CASE 
+             WHEN COUNT([Household Id]) OVER (PARTITION BY [Household Id]) > 1 
+            THEN 'Family'
+            ELSE 'Single'
+        END AS Household_TypeCAST  [Person Id]  AS INT,
 		UPPER (TRIM [First Name]),
 		UPPER (TRIM [Last Name HCLIC A1.5]),
 		[NINO HCLIC A1.6],
