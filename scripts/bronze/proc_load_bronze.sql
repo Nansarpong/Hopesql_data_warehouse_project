@@ -39,13 +39,13 @@ BEGIN
       SET @start_time = GETDATE();
 -- Full Load
 		
-		TRUNCATE TABLE [bronze].[HopeExtract]
+		TRUNCATE TABLE Hope_bronze;
 
 			
 -- get the path for below. should be sharepoint file but for immeddiacy the file is linked to the sharepoint file via personal one-drive file. (Security issue to be resolved)	
-		BULK INSERT [bronze].[HopeExtract]
+		BULK INSERT Hope_bronze
 			
-		FROM C:\Users\nsarpon\OneDrive - Office Shared Service\General - Data & Performance - Housing Needs\Hopepipeline\HopeExtract.csv
+		FROM 'C:\Users\nsarpon\OneDrive - Office Shared Service\General - Data & Performance - Housing Needs\Hopepipeline\HopeExtract.csv'
 		WITH (
 		FirstROW = 2,
 		FIELDTERMINATOR = ',',
@@ -64,5 +64,5 @@ BEGIN
 		PRINT '==============================================================';
 	END CATCH
 END
-SELECT * FROM [bronze].[HopeExtract]
-SELECT COUNT (* ) FROM [bronze].[HopeExtrac
+SELECT * FROM Hope_bronze
+SELECT COUNT (* ) FROM Hope_bronze
