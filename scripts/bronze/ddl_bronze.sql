@@ -7,11 +7,14 @@ Script Purpose:
   run this script to re-define the DDL structure of 'bronse' Tables
 =======================================================
 */
+--specifies database to use 
+use WCC_Reports_Live
 
-IF Object ID ('[bronze].[HopeExtract]' , 'U') IS NOT NULL
-	DROP TABLE [bronze].[HopeExtract];
+--full script
+IF Object_ID ('Hope_bronze' , 'U') IS NOT NULL
+	DROP TABLE Hope_bronze;
 
-CREATE TABLE [bronze].[HopeExtract] (
+CREATE TABLE Hope_bronze (
     [Application Id] NVARCHAR(MAX),
     [Household Id] NVARCHAR(MAX),
     [Person Id] NVARCHAR(MAX),
