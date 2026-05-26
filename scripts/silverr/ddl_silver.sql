@@ -14,7 +14,7 @@ IF Object_ID ('Hope_silver' , 'U') IS NOT NULL
 	DROP TABLE Hope_silver;
 
 
-CREATE TABLE [silver].[HopeExtract] (
+CREATE TABLE Hope_silver (
     [Application Id] NVARCHAR(MAX),
     [Household Id] NVARCHAR(MAX),
     [Person Id] NVARCHAR(MAX),
