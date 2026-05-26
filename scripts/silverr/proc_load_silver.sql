@@ -661,7 +661,7 @@ BEGIN
 		[HCLIC 10.6 Review Outcome],
 		[SecondAssignedOfficer]),
 		dwh_create_date DATETIME2 DEFAULT GETDATE()
-	From [bronze].[HopeExtract]
+	From Hope_bronze
 
 		SET @end_time = GETDATE();
 		PRINT '>> Load Duration: ' +CAST(DATEDIFF(SECOND,@start_time, @end_time) as NVARCHAR) + ' seconds';
