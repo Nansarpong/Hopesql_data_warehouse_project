@@ -9,6 +9,7 @@ Actions Performed:
 
 - Truncate Silver tables.
 - Inserts transformed and cleansed data from Bronze into Silver tables. 
+- Free fields ommitted in silver_load. 
 
 Parameters: 
  None - this stored procedure does not accept any parameters or return any values. 
@@ -51,7 +52,7 @@ BEGIN
 
 	PRINT '>> Inserting Data Into: silver.HopeExtract';
 
-	INSERT INTO [silver].[HopeExtract] (
+	INSERT INTO  Hope_silver (
 		[Application Id],
 		[Household Id],
 		[Person Id],
@@ -77,6 +78,11 @@ BEGIN
 		[Plan Type],
 		[Plan Created Date],
 		[Plan Publish Status],
+
+		
+		/* 
+		Free fields ommitted in silver_load. 
+		_______________________________________________________
 		[Is the applicant working?],
 		[Has the applicant ever worked?],
 		[Reason for no longer working],
@@ -280,6 +286,7 @@ BEGIN
 		[Referred into another authority],
 		[Does the applicant or a member of the household have any support needs?],
 		[Does anyone help the person with their support needs?],
+		*/
 		[H-CLIC 1.1 Local Authority Code and Case Reference Number ],
 		[H-CLIC 1.3 Are you satisfied that the applicant is eligible for assistance?],
 		[H-CLIC 1.4 Number of Children],
@@ -388,6 +395,8 @@ BEGIN
 		[Plan Type],
 		CAST [Plan Created Date] AS DATE,
 		[Plan Publish Status],
+		
+		/*
 		[Is the applicant working?],
 		[Has the applicant ever worked?],
 		[Reason for no longer working],
@@ -591,9 +600,18 @@ BEGIN
 		[Referred into another authority],
 		[Does the applicant or a member of the household have any support needs?],
 		[Does anyone help the person with their support needs?],
+           */
 		[H-CLIC 1.1 Local Authority Code and Case Reference Number ],
 		[H-CLIC 1.3 Are you satisfied that the applicant is eligible for assistance?],
 		CAST [H-CLIC 1.4 Number of Children] AS INT),
+		
+	-- Derived column. 
+		CASE 
+          WHEN CAST([H-CLIC 1.4 Number of Children] AS INT) > 0 
+           THEN 'Children'
+           ELSE 'No-Children'
+          END AS Children_Status,
+		
 		CAST [H-CLIC 1.5 Date of assessment] AS DATE,
 		[H-CLIC 1.6 What duties are owed to the applicant?],
 		[H-CLIC 1.7 Ethnic Group of the main applicant],
