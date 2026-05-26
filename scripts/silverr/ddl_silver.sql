@@ -321,6 +321,6 @@ CREATE TABLE [silver].[HopeExtract] (
     [HCLIC 10.6 Review Outcome] NVARCHAR(MAX),
 
     [SecondAssignedOfficer] NVARCHAR(MAX)
-    dwh_create_date DATETIME2 EFAULT GETDATE()
+    dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 GO
