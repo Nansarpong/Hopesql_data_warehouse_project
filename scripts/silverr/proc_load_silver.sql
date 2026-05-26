@@ -14,7 +14,7 @@ Parameters:
  None - this stored procedure does not accept any parameters or return any values. 
 
 Use Example: 
- EXEC silver.load_bronze;
+ EXEC silver.load__silver_Hope;
 
 ========================================================================
 */
@@ -30,7 +30,7 @@ EXEC silver.load_silver
 
 
 
-CREATE OR ALTER PROCEDURE silver.load_silver AS
+CREATE OR ALTER PROCEDURE silver.load_silver_Hope AS
 
 BEGIN
     DECLARE @start_time DATETIME, @end_time DATETIME;
@@ -55,7 +55,7 @@ BEGIN
 		[Application Id],
 		[Household Id],
 		[Person Id],
-		[First Name,
+		[First Name],
 		[Last Name HCLIC A1.5],
 		[NINO HCLIC A1.6],
 		[Email Address],
@@ -350,7 +350,7 @@ BEGIN
 		[HCLIC 10.6 Review Outcome],
 		[SecondAssignedOfficer])
 
-		dwh_create_date DATETIME2 EFAULT GETDATE()
+		dwh_create_date DATETIME2 DEFAULT GETDATE()
 )
 
 	SELECT 
@@ -656,7 +656,7 @@ BEGIN
 		[HCLIC 10.5 Review Appeal],
 		[HCLIC 10.6 Review Outcome],
 		[SecondAssignedOfficer]),
-		dwh_create_date DATETIME2 EFAULT GETDATE()
+		dwh_create_date DATETIME2 DEFAULT GETDATE()
 	From [bronze].[HopeExtract]
 
 		SET @end_time = GETDATE();
