@@ -9,9 +9,10 @@ Script Purpose:
 =======================================================
 */
 
-IF Object ID ('[silver].[HopeExtract]' , 'U') IS NOT NULL
-	DROP TABLE [silver].[HopeExtract];#
-GO
+
+IF Object_ID ('Hope_silver' , 'U') IS NOT NULL
+	DROP TABLE Hope_silver;
+
 
 CREATE TABLE [silver].[HopeExtract] (
     [Application Id] NVARCHAR(MAX),
