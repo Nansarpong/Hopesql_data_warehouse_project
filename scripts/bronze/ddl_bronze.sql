@@ -5,6 +5,7 @@ DDL Script: Creating Bronze Tables
 Script Purpose: 
    This script creates tables in the 'bronze' schema, dropping existing tables if they already exist. 
   run this script to re-define the DDL structure of 'bronse' Tables
+This is a full load from the csv file. 
 =======================================================
 */
 --specifies database to use 
