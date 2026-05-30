@@ -64,5 +64,5 @@ BEGIN
 		PRINT '==============================================================';
 	END CATCH
 END
-SELECT * FROM Hope_bronze
-SELECT COUNT (* ) FROM Hope_bronze
+SELECT * FROM [HOPE_bronze].[full_load]
+SELECT COUNT (* ) [HOPE_bronze].[full_load]
