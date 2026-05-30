@@ -39,11 +39,11 @@ BEGIN
       SET @start_time = GETDATE();
 -- Full Load
 		
-		TRUNCATE TABLE Hope_bronze;
+		TRUNCATE TABLE [HOPE_bronze].[full_load];
 
 			
--- get the path for below. should be sharepoint file but for immeddiacy the file is linked to the sharepoint file via personal one-drive file. (Security issue to be resolved)	
-		BULK INSERT Hope_bronze
+-- Please note. the path for below. should be sharepoint file but for immeddiacy the file is linked to the sharepoint file via personal one-drive file. (Security issue to be resolved)	
+		BULK INSERT [HOPE_bronze].[full_load]
 			
 		FROM 'C:\Users\nsarpon\OneDrive - Office Shared Service\General - Data & Performance - Housing Needs\Hopepipeline\HopeExtract.csv'
 		WITH (
