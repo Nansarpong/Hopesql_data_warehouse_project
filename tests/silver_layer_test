@@ -1,0 +1,26 @@
+/* This test checks for unwanted spaces in the silver layer. 
+--Expectation no results
+*/
+--first name 
+select [First Name],
+       TRIM([First Name])
+from [HOPE_silver].[load]
+where [First Name] != TRIM([First Name])
+
+--last name
+select [Last Name HCLIC A1.5],
+       TRIM([Last Name HCLIC A1.5])
+from [HOPE_silver].[load]
+where [Last Name HCLIC A1.5] != TRIM([Last Name HCLIC A1.5])
+
+--Address 
+select [Address (HCLIC A1.7)],
+       TRIM([Address (HCLIC A1.7)])
+from [HOPE_silver].[load]
+where [Address (HCLIC A1.7)] != TRIM([Address (HCLIC A1.7)])
+
+--post code  [PostCode (HCLIC A1.8)]
+select [PostCode (HCLIC A1.8)],
+       TRIM([PostCode (HCLIC A1.8)])
+from [HOPE_silver].[load]
+where [PostCode (HCLIC A1.8)] != TRIM([PostCode (HCLIC A1.8)])
