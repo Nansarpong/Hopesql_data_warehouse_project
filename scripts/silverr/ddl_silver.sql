@@ -11,10 +11,10 @@ Script Purpose:
 
 
 IF Object_ID ('silver_load' , 'U') IS NOT NULL
-	DROP TABLE Hope_silver_load;
+	DROP TABLE Hope_silver.load;
 
 
-CREATE TABLE Hope_silver_load (
+CREATE TABLE Hope_silver.load (
     [Application Id] INT,
     [Household Id] INT,
     [Household_Type] NVARCHAR(20),
