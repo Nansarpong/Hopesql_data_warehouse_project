@@ -10,9 +10,9 @@ Script Purpose:
 */
 
 use WCC_Reports_Live
-	
-IF Object_ID ('silver_load' , 'U') IS NOT NULL
-	DROP TABLE Hope_silver.load;
+IF OBJECT_ID('[HOPE_silver].[load]', 'U') IS NOT NULL
+    DROP TABLE [HOPE_silver].[load];
+GO
 
 
 CREATE TABLE Hope_silver.load (
@@ -322,3 +322,6 @@ CREATE TABLE Hope_silver.load (
     dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 GO
+
+-- check to see table coloumns have been created
+select * From [HOPE_silver].[load]
