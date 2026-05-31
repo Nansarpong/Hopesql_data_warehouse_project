@@ -185,7 +185,7 @@ SELECT
     TRY_CONVERT(DATE, src.[Date Of Submission]) AS [Date Of Submission],
     src.[Assigned To],
     TRY_CONVERT(DATE, src.[Date Joined(HCLIC -2.6)]) AS [Date Joined(HCLIC -2.6)],
-    src.[Address (HCLIC A1.7)],
+    TRIM(src.[Address (HCLIC A1.7)]),
     TRIM(src.[PostCode (HCLIC A1.8)]) AS [PostCode (HCLIC A1.8)],
     src.[Address Type],
     TRY_CONVERT(DATE, src.[Date Move In]) AS [Date Move In],
