@@ -12,10 +12,10 @@ This is a full load from the csv file.
 use WCC_Reports_Live
 
 --full script
-IF Object_ID ('Hope_bronze' , 'U') IS NOT NULL
-	DROP TABLE Hope_bronze;
+IF Object_ID ('full_load' , 'U') IS NOT NULL
+	DROP TABLE [HOPE_bronze].full_load;
 
-CREATE TABLE Hope_bronze (
+ CREATE TABLE [HOPE_bronze].full_load (
     [Application Id] NVARCHAR(MAX),
     [Household Id] NVARCHAR(MAX),
     [Person Id] NVARCHAR(MAX),
