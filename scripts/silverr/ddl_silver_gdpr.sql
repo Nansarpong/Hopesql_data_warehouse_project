@@ -1,4 +1,15 @@
 
+/*
+======================================================
+DDL Script: Creating silver Tables - under GDPR
+======================================================
+Script Purpose: 
+   This script creates tables in the 'silver' schema, dropping existing tables if they already exist. 
+  run this script to re-define the DDL structure of 'silver' Tables
+
+NOTE: This only creates a table for the sensitive GDPR COMPLIANT CLIENT DATA  
+=======================================================
+*/
 
 
 
