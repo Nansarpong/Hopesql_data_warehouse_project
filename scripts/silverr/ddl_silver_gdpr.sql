@@ -15,3 +15,5 @@ CREATE TABLE Hope_silver.dpr (
     [Email Address] NVARCHAR(MAX),
     [Mobile Number] NVARCHAR(MAX),
     [Date of Birth HCLIC A1.3] DATE,
+);
+GO
