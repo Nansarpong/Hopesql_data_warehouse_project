@@ -10,36 +10,40 @@ Script Purpose:
 */
 
 
-IF Object_ID ('Hope_silver' , 'U') IS NOT NULL
+IF Object_ID ('silver_load' , 'U') IS NOT NULL
 	DROP TABLE Hope_silver;
 
 
 CREATE TABLE Hope_silver (
-    [Application Id] NVARCHAR(MAX),
-    [Household Id] NVARCHAR(MAX),
-    [Person Id] NVARCHAR(MAX),
+    [Application Id] INT,
+    [Household Id] INT,
+    [Household_Type] NVARCHAR(20),
+    [Person Id] INT,
     [First Name] NVARCHAR(MAX),
     [Last Name HCLIC A1.5] NVARCHAR(MAX),
     [NINO HCLIC A1.6] NVARCHAR(MAX),
     [Email Address] NVARCHAR(MAX),
     [Mobile Number] NVARCHAR(MAX),
-    [Date of Birth HCLIC A1.3] NVARCHAR(MAX),
+    [Date of Birth HCLIC A1.3] DATE,
     [Sex HCLIC 2.3] NVARCHAR(MAX),
     [Relationship HCLIC -2.5] NVARCHAR(MAX),
-    [Age at Application(HCLIC - 2.4)] NVARCHAR(MAX),
-    [Age on Quarter End(HCLIC -2.8)] NVARCHAR(MAX),
-    [Date Of Submission] NVARCHAR(MAX),
+    [Age at Application(HCLIC - 2.4)] INT,
+    [Age on Quarter End(HCLIC -2.8)] INT,
+    [Date Of Submission] DATE,
     [Assigned To] NVARCHAR(MAX),
-    [Date Joined(HCLIC -2.6)] NVARCHAR(MAX),
+    [Date Joined(HCLIC -2.6)] DATE,
     [Address (HCLIC A1.7)] NVARCHAR(MAX),
     [PostCode (HCLIC A1.8)] NVARCHAR(MAX),
     [Address Type] NVARCHAR(MAX),
-    [Date Move In] NVARCHAR(MAX),
-    [Date Move Out] NVARCHAR(MAX),
+    [Date Move In] DATE,
+    [Date Move Out] DATE,
     [App Type] NVARCHAR(MAX),
     [Plan Type] NVARCHAR(MAX),
-    [Plan Created Date] NVARCHAR(MAX),
-    [Plan Publish Status] NVARCHAR(MAX),
+    [Plan Created Date] DATE,
+    
+	/* These fields will not be used for th purpose of the project but will be leaved in for future development.  
+
+	[Plan Publish Status] NVARCHAR(MAX),
     [Is the applicant working?] NVARCHAR(MAX),
     [Has the applicant ever worked?] NVARCHAR(MAX),
     [Reason for no longer working] NVARCHAR(MAX),
@@ -243,11 +247,12 @@ CREATE TABLE Hope_silver (
     [Referred into another authority] NVARCHAR(MAX),
     [Does the applicant or a member of the household have any support needs?] NVARCHAR(MAX),
     [Does anyone help the person with their support needs?] NVARCHAR(MAX),
-    [H-CLIC 1.1 Local Authority Code and Case Reference Number ] NVARCHAR(MAX),
+    */
+	[H-CLIC 1.1 Local Authority Code and Case Reference Number ] NVARCHAR(MAX),
     [H-CLIC 1.3 Are you satisfied that the applicant is eligible for assistance?] NVARCHAR(MAX),
-    [H-CLIC 1.4 Number of Children] NVARCHAR(MAX),
-    [H-CLIC 1.5 Date of assessment] NVARCHAR(MAX),
-   
+    [H-CLIC 1.4 Number of Children] INT,
+    [Children_Status] NVARCHAR(20),
+    [H-CLIC 1.5 Date of assessment] DATE,
     [H-CLIC 1.6 What duties are owed to the applicant?] NVARCHAR(MAX),
     [H-CLIC 1.7 Ethnic Group of the main applicant] NVARCHAR(MAX),
     [H-CLIC 1.8 Sexual Preference of the main applicant] NVARCHAR(MAX),
@@ -264,35 +269,30 @@ CREATE TABLE Hope_silver (
     [H-CLIC 1.19 Whether applicant referred to the authority?] NVARCHAR(MAX),
     [H-CLIC 1.20 Agency type] NVARCHAR(MAX),
     [H-CLIC 1.21 Referred by another authority] NVARCHAR(MAX),
-    [H-CLIC 1.22 Date homeless application made] NVARCHAR(MAX),
+    [H-CLIC 1.22 Date homeless application made] DATE,
     [H-CLIC 1.23 Current employment status for partner/spouse] NVARCHAR(MAX),
     [H-CLIC 1.24 Is your gender the same as the sex you were registered at birth?] NVARCHAR(MAX),
-
     [H-CLIC 3.2 Support needs] NVARCHAR(MAX),
-
-    [H-CLIC 4.2 Date prevention duty started] NVARCHAR(MAX),
+    [H-CLIC 4.2 Date prevention duty started] DATE,
     [H-CLIC 4.3 Prevention Activity undertaken] NVARCHAR(MAX),
     [H-CLIC 4.4 Were the applicants support needs engaged during the prevention stage?] NVARCHAR(MAX),
-    [H-CLIC 4.5 Date Prevention Duty ended ] NVARCHAR(MAX),
+    [H-CLIC 4.5 Date Prevention Duty ended ] DATE,
     [H-CLIC 4.6 Reason Prevention Duty ended] NVARCHAR(MAX),
     [H-CLIC 4.7 Is a temporary accommodation duty owed following the end of the prevention duty] NVARCHAR(MAX),
     [H-CLIC 4.8 Applicant’s accommodation at point Prevention Duty ended] NVARCHAR(MAX),
     [H-CLIC 4.9 Which Local Authority area is this accommodation in?] NVARCHAR(MAX),
-
-    [H-CLIC 5.2 Date Relief duty started] NVARCHAR(MAX),
+    [H-CLIC 5.2 Date Relief duty started] DATE,
     [H-CLIC 5.3 Relief Activity undertaken] NVARCHAR(MAX),
     [H-CLIC 5.4 Were the applicant’s support needs engaged during the prevention stage?] NVARCHAR(MAX),
-    [H-CLIC 5.5 Date Relief Duty ended ] NVARCHAR(MAX),
+    [H-CLIC 5.5 Date Relief Duty ended ] DATE,
     [H-CLIC 5.6 Reason Relief Duty ended] NVARCHAR(MAX),
     [H-CLIC 5.7 Is a temporary accommodation duty owed during the relief duty?] NVARCHAR(MAX),
     [H-CLIC 5.8 Applicant’s accommodation at point Relief Duty ended] NVARCHAR(MAX),
     [H-CLIC 5.9 Which Local Authority area is this accommodation in?] NVARCHAR(MAX),
     [H-CLIC 5.10 If referred to another Local Authority, which Local Authority?] NVARCHAR(MAX),
-
     [H-CLIC 6.2 Assistance with support needs] NVARCHAR(MAX),
-
-    [H-CLIC 7.1 Main duty decision date] NVARCHAR(MAX),
-    [H-CLIC 7.2 Date main duty decision takes effect ] NVARCHAR(MAX),
+    [H-CLIC 7.1 Main duty decision date] DATE,
+    [H-CLIC 7.2 Date main duty decision takes effect ] DATE,
     [H-CLIC 7.3 The outcome of the decision issued on what duty (if any) is owed when relief stage ends (the main duty)] NVARCHAR(MAX),
     [H-CLIC 7.4 Was relief offered to legacy cases?] NVARCHAR(MAX),
     [H-CLIC 7.5 What priority need the applicant has?] NVARCHAR(MAX),
@@ -300,28 +300,24 @@ CREATE TABLE Hope_silver (
     [H-CLIC 7.7 What kind of accommodation is/was the applicant in when you brought the duty to an end?] NVARCHAR(MAX),
     [H-CLIC 7.8 Have you referred the main housing duty to another local authority?] NVARCHAR(MAX),
     [H-CLIC 7.9 In what local authority district is the accommodation outcome described in H-CLIC 7.7] NVARCHAR(MAX),
-
-    [H-CLIC 8.2 Section 193(2), section 193C(4) or section 195A(1) duty end date] NVARCHAR(MAX),
+    [H-CLIC 8.2 Section 193(2), section 193C(4) or section 195A(1) duty end date] DATE,
     [H-CLIC 8.3 What is the reason the section 193(2) Duty, the section 193C(4) Duty or the section 195A(1) Duty has ended?] NVARCHAR(MAX),
     [H-CLIC 8.4 What was the applicant's accommodation when section 193(2), section 193C(4) or the section 195A(1) duty ended?] NVARCHAR(MAX),
     [H-CLIC 8.5 In what local authority district is the accommodation outcome?] NVARCHAR(MAX),
-
-    [Hclic 9.2 Entry Date] NVARCHAR(MAX),
-    [Hclic 9.3 Placement Entry Date] NVARCHAR(MAX),
-    [Hclic 9.4 Placement Exit Date] NVARCHAR(MAX),
+    [Hclic 9.2 Entry Date] DATE,
+    [Hclic 9.3 Placement Entry Date] DATE,
+    [Hclic 9.4 Placement Exit Date] DATE,
     [Hclic 9.5 TA Type] NVARCHAR(MAX),
-    [Hclic 9.6 No Of Bedroom] NVARCHAR(MAX),
+    [Hclic 9.6 No Of Bedroom] INT,
     [Hclic 9.7 Duty Provided] NVARCHAR(MAX),
     [Hclic 9.8 Duty Provided] NVARCHAR(MAX),
-    [Hclic 9.9 Exit Date] NVARCHAR(MAX),
-
-    [HCLIC 10.2 Review Start Date] NVARCHAR(MAX),
-    [HCLIC 10.3 Review End Date] NVARCHAR(MAX),
+    [Hclic 9.9 Exit Date] DATE,
+    [HCLIC 10.2 Review Start Date] DATE,
+    [HCLIC 10.3 Review End Date] DATE,
     [HCLIC 10.4 Review Requested] NVARCHAR(MAX),
     [HCLIC 10.5 Review Appeal] NVARCHAR(MAX),
     [HCLIC 10.6 Review Outcome] NVARCHAR(MAX),
-
-    [SecondAssignedOfficer] NVARCHAR(MAX)
+    [SecondAssignedOfficer] NVARCHAR(MAX),
     dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 GO
