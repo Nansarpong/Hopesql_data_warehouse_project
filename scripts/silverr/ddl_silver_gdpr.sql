@@ -13,8 +13,8 @@ NOTE: This only creates a table for the sensitive GDPR COMPLIANT CLIENT DATA
 
 
 
-IF OBJECT_ID('[HOPE_silver].[dpr]', 'U') IS NOT NULL
-    DROP TABLE [HOPE_silver].[dpr];
+IF OBJECT_ID('[HOPE_silver].[gdpr]', 'U') IS NOT NULL
+    DROP TABLE [HOPE_silver].[gdpr];
 GO
 
 
