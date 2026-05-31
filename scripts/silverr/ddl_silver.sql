@@ -9,7 +9,8 @@ Script Purpose:
 =======================================================
 */
 
-
+use WCC_Reports_Live
+	
 IF Object_ID ('silver_load' , 'U') IS NOT NULL
 	DROP TABLE Hope_silver.load;
 
