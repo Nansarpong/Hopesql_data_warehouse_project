@@ -1,9 +1,9 @@
 /*
 ======================================================================
-stored procedure: Load silver Layer ( Bronze - > Silver)
+stored procedure: Load silver Layer gdpr ( Bronze - > Silver)
 ======================================================================
 script purpose: 
-  THIS STORED PROCEDURE performs the ETL (Extract, transformation, Load) process to populate the 'silver' schema tables from the 'bronze' schema'
+  THIS STORED PROCEDURE performs the ETL (Extract, transformation, Load) process to populate the 'silver' gdpr schema tables from the 'bronze' schema'
  
 
 Actions Performed:
@@ -11,6 +11,7 @@ Actions Performed:
 - Truncate Silver tables.
 - Inserts transformed and cleansed data from Bronze into Silver tables. 
 - Free fields ommitted in silver_load. 
+-only gdpr compliant fields are captured. 
 
 Parameters: 
  None - this stored procedure does not accept any parameters or return any values. 
@@ -48,14 +49,14 @@ BEGIN
 		PRINT '==============================================================';
 
 	SET @start_time = GETDATE();
-	PRINT '>> Truncating Table Into: [silver].[HopeExtract]';
+	PRINT '>> Truncating Table Into: [silver].[HopeExtract][gdrpr]';
 
-	TRUNCATE TABLE [HOPE_silver].[dpr];
+	TRUNCATE TABLE [HOPE_silver].[gdpr];
 
 	PRINT '>> Inserting Data Into: silver.HopeExtract';
 
 	use WCC_Reports_Live
-insert into [HOPE_silver].[dpr]
+insert into [HOPE_silver].[gdpr]
 (
   
     [Person Id],
