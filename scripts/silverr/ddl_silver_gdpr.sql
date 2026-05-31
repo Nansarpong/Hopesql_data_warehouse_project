@@ -18,7 +18,7 @@ IF OBJECT_ID('[HOPE_silver].[gdpr]', 'U') IS NOT NULL
 GO
 
 
-CREATE TABLE Hope_silver.dpr (
+CREATE TABLE Hope_silver.gdpr (
     [Person Id] INT,
     [First Name] NVARCHAR(MAX),
     [Last Name HCLIC A1.5] NVARCHAR(MAX),
