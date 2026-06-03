@@ -42,7 +42,7 @@ CREATE TABLE Hope_silver.load (
     [Plan Type] NVARCHAR(MAX),
     [Plan Created Date] DATE,
     
-	/* These fields will not be used for th purpose of the project but will be leaved in for future development.  
+	/* These fields will not be used for th purpose of the project but will be left in for future development.  
 
 	[Plan Publish Status] NVARCHAR(MAX),
     [Is the applicant working?] NVARCHAR(MAX),
