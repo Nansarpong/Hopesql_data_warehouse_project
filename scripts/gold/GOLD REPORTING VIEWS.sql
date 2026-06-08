@@ -28,6 +28,7 @@ GO
 CREATE OR ALTER VIEW [HOPE_gold].dim_Household AS
 SELECT
     [Household Id] AS HouseholdId,
+    [Application Id] AS ApplicationId,
     [Household_Type] AS HouseholdType,
     [Address (HCLIC A1.7)] AS AddressLine,
     [Address Type] AS AddressType,
