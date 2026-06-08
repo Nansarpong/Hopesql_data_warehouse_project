@@ -26,7 +26,8 @@ SELECT DISTINCT
     [H-CLIC 1.21 Referred by another authority],
     [H-CLIC 1.22 Date homeless application made]
 FROM [HOPE_silver].[load]
-WHERE [Application Id] IS NOT NULL;
+WHERE [Application Id] IS NOT NULL
+    AND [Relationship HCLIC -2.5] = ('Main Applicant');
 GO
 
 CREATE OR ALTER VIEW [HOPE_silver].vw_Household_3NF AS
@@ -47,8 +48,10 @@ SELECT DISTINCT
     [H-CLIC 1.17 what was the reason for the loss of social rented tenancy?],
     [H-CLIC 1.18 what was the reason for the eviction from supported housing?]
 FROM [HOPE_silver].[load]
-WHERE [Household Id] IS NOT NULL;
+WHERE [Household Id] IS NOT NULL
+    AND [Relationship HCLIC -2.5] = ('Main Applicant');
 GO
+
 
 CREATE OR ALTER VIEW [HOPE_silver].vw_Person_3NF AS
 SELECT DISTINCT
@@ -67,7 +70,8 @@ SELECT DISTINCT
     [H-CLIC 1.10 Current employment status for applicant],
     [H-CLIC 1.24 Is your gender the same as the sex you were registered at birth?]
 FROM [HOPE_silver].[load]
-WHERE [Person Id] IS NOT NULL;
+WHERE [Person Id] IS NOT NULL
+    AND [Relationship HCLIC -2.5] = ('Main Applicant');
 GO
 
 CREATE OR ALTER VIEW [HOPE_silver].vw_Assessment_3NF AS
@@ -85,7 +89,8 @@ SELECT DISTINCT
     [H-CLIC 3.2 Support needs],
     [H-CLIC 6.2 Assistance with support needs]
 FROM [HOPE_silver].[load]
-WHERE [Application Id] IS NOT NULL;
+WHERE [Application Id] IS NOT NULL
+    AND [Relationship HCLIC -2.5] = ('Main Applicant');
 GO
 
 CREATE OR ALTER VIEW [HOPE_silver].vw_PreventionActivity_3NF AS
@@ -100,7 +105,8 @@ SELECT DISTINCT
     [H-CLIC 4.8 Applicant’s accommodation at point Prevention Duty ended],
     [H-CLIC 4.9 Which Local Authority area is this accommodation in?]
 FROM [HOPE_silver].[load]
-WHERE [Application Id] IS NOT NULL;
+WHERE [Application Id] IS NOT NULL
+    AND [Relationship HCLIC -2.5] = ('Main Applicant');
 GO
 
 CREATE OR ALTER VIEW [HOPE_silver].vw_ReliefDutyActivity_3NF AS
@@ -116,7 +122,8 @@ SELECT DISTINCT
     [H-CLIC 5.9 Which Local Authority area is this accommodation in?],
     [H-CLIC 5.10 If referred to another Local Authority, which Local Authority?]
 FROM [HOPE_silver].[load]
-WHERE [Application Id] IS NOT NULL;
+WHERE [Application Id] IS NOT NULL
+    AND [Relationship HCLIC -2.5] = ('Main Applicant');
 GO
 
 CREATE OR ALTER VIEW [HOPE_silver].vw_MainDuty_3NF AS
@@ -136,7 +143,8 @@ SELECT DISTINCT
     [H-CLIC 8.4 What was the applicant's accommodation when section 193(2), section 193C(4) or the section 195A(1) duty ended?],
     [H-CLIC 8.5 In what local authority district is the accommodation outcome?]
 FROM [HOPE_silver].[load]
-WHERE [Application Id] IS NOT NULL;
+WHERE [Application Id] IS NOT NULL
+    AND [Relationship HCLIC -2.5] = ('Main Applicant');
 GO
 
 CREATE OR ALTER VIEW [HOPE_silver].vw_TA_Details_3NF AS
@@ -151,5 +159,6 @@ SELECT DISTINCT
     [Hclic 9.8 Duty Provided],
     [Hclic 9.9 Exit Date]
 FROM [HOPE_silver].[load]
-WHERE [Application Id] IS NOT NULL;
+WHERE [Application Id] IS NOT NULL
+    AND [Relationship HCLIC -2.5] = ('Main Applicant');
 GO
