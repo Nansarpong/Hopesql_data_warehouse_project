@@ -33,6 +33,7 @@ GO
 CREATE OR ALTER VIEW [HOPE_silver].vw_Household_3NF AS
 SELECT DISTINCT
     [Household Id],
+    [Application Id],
     [Household_Type],
     [Address (HCLIC A1.7)],
     [Address Type],
